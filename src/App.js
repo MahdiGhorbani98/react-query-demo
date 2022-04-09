@@ -6,6 +6,10 @@ import RQSuperHeroes from "./components/RQSuperHeroes.page";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { RQSuperHero } from "./components/RQSuperHero";
+import { RQParallel } from "./components/RQParallel";
+import { DynamicParallelQuery } from "./components/DynamicParallelQuery";
+import { PaginatedQueries } from "./components/PaginatedQueries";
+import { InfinteQueries } from "./components/InfinteQueries";
 
 const queryClient = new QueryClient();
 function App() {
@@ -27,6 +31,13 @@ function App() {
         </nav>
 
         <Routes>
+          <Route
+            path="/rq-dynamic-parallel"
+            element={<DynamicParallelQuery heroId={[1, 3]} />}
+          />
+          <Route path="/infinte-queries" element={<InfinteQueries />} />
+          <Route path="/paginated-queries" element={<PaginatedQueries />} />
+          <Route path="/rq-parallel" element={<RQParallel />} />
           <Route path="/rq-super-heroes/:heroId" element={<RQSuperHero />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/super-heroes" element={<SuperHeroes />} />
